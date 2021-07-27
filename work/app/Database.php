@@ -2,7 +2,7 @@
 
 namespace MyApp;
 
-class DataBase
+class Database
 {
   private static $instance;
 
@@ -11,7 +11,7 @@ class DataBase
     try{
       if (!isset(self::$instance))
       {
-        self::$instance = new \PDO(
+       self::$instance = new \PDO(
           DSN,
           DB_USER,
           DB_PASS,
@@ -22,6 +22,8 @@ class DataBase
           ]
         );
       }
+
+      return self::$instance;
     } catch (\PDOException $e) {
       echo $e->getMessage();
       exit;
